@@ -1,0 +1,12 @@
+{
+  "voters": [
+    {"id":1,"firstname":"Peter", "lastname":"Petrelli"}, {"id":2, "firstname":"Nathan", "lastname":"Petrelli"}
+  ], 
+  "candidates": [
+    {"id":1, "party":"APC", "firstname":"Hiro", "lastname":"Nakamora", "manifesto":""}, 
+    {"id":2, "party":"PDP", "firstname":"Claire", "lastname":"Petrelli", "manifesto":""}
+  ],
+  "admins":[
+    {"id":1, "username":"admin", "password":"adminpass"}
+  ]
+}
