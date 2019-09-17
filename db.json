@@ -1,12 +1,158 @@
 {
   "voters": [
-    {"id":1,"firstname":"Peter", "lastname":"Petrelli"}, {"id":2, "firstname":"Nathan", "lastname":"Petrelli"}
-  ], 
-  "candidates": [
-    {"id":1, "party":"APC", "firstname":"Hiro", "lastname":"Nakamora", "manifesto":"This is me, I am Hiro", "votes":0}, 
-    {"id":2, "party":"PDP", "firstname":"Claire", "lastname":"Petrelli", "manifesto":"This is me, I am Claire", "votes":0}
+    {
+      "id": 1,
+      "firstname": "Peter",
+      "lastname": "Petrelli"
+    },
+    {
+      "id": 2,
+      "firstname": "Nathan",
+      "lastname": "Petrelli",
+      "hasVoted":true
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
+    },
+    {
+      "id": 19
+    },
+    {
+      "id": 20
+    },
+    {
+      "id": 21
+    },
+    {
+      "id": 22
+    },
+    {
+      "id": 23
+    }
   ],
-  "admins":[
-    {"id":1, "username":"admin", "password":"adminpass"}
+  "candidates": [
+    {
+      "id": 1,
+      "party": "APC",
+      "firstname": "Hiro",
+      "lastname": "Nakamora",
+      "manifesto": "This is me, I am Hiro",
+      "votes": 0,
+      "hasVoted": true
+    },
+    {
+      "id": 2,
+      "party": "PDP",
+      "firstname": "Claire",
+      "lastname": "Petrelli",
+      "manifesto": "This is me, I am Claire",
+      "votes": 0
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
+    },
+    {
+      "id": 19
+    },
+    {
+      "id": 20
+    }
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "adminpass"
+    }
   ]
 }
