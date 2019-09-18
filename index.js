@@ -11,22 +11,38 @@ $(function(){
       $(".manifesto1").text(data[0]["manifesto"])
       $(".manifesto2").text(data[1]["manifesto"])
   })
-  localStorage.setItem("id", "1")
-  var voterid = localStorage.getItem("id")
-  // console.log(parseInt(voterid))
-  $("#login").click(function() {
+  console.log(localStorage.getItem("id"))
+  if (localStorage.getItem("id")!==null) {
+    
+  }
+  $("#login2").click(function() {
     var lastname = $("#lastname").val()
-    console.log(lastname)
     var voterid = $("#voterid").val()
-    console.log("click")
+    error = true
+    console.log(lastname)
     $.ajax({
       url: "http://localhost:3000/voters",
-      type: "POST",
+      type: "GET",
+      data:{},
       dataType: "json",
       contentType: "application/json"
     }).done(function(data) {
+      console.log(data)
       ans = data.filter(element => element["lastname"] === lastname && element["id"] === voterid)
-      console.log(ans.length>0)
+      console.log(ans)
+      $.each(data, function(key, value) {
+        if (lastname==value.lastname && voterid==value.id) {
+          error = false
+          console.log("okay")
+        }
+      })
+      if (error === false) {
+        $("#loginform").attr("action", "dash.html")
+        alert("success")
+        document.location="dash.html"
+        localStorage.setItem("id", voterid)
+      }
+      else {alert("Invalid Credentials!")}
     })
   })
 })
