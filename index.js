@@ -12,9 +12,11 @@ $(function(){
       $(".manifesto2").text(data[1]["manifesto"])
   })
   console.log(localStorage.getItem("id"))
-  if (localStorage.getItem("id")!==null) {
-    
-  }
+  $(".navlogin").click(function(){
+    if (localStorage.getItem("id")!==null) {
+      document.location=dash.html
+    }
+  })
   $("#login2").click(function() {
     var lastname = $("#lastname").val()
     var voterid = $("#voterid").val()
@@ -50,6 +52,16 @@ $(function(){
   $("#logout").click(function(){
     localStorage.removeItem("id");
     document.location="/index.html"
+  })
+  $(".vote").click(function(){
+    votecheck = {"hasVoted": true}
+    $.ajax({
+      url: "http://localhost:3000/voters/"+localStorage.getItem("id"),
+      type: "PATCH",
+      data:JSON.stringify(votecheck),
+      dataType: "json",
+      contentType: "application/json"
+    }).done(alert("Thank you for participating!"))
   })
   $(".vote1").click(function() {
     let candidate;

@@ -3,7 +3,8 @@
     {
       "id": 1,
       "firstname": "Peter",
-      "lastname": "Petrelli"
+      "lastname": "Petrelli",
+      "hasVoted": true
     },
     {
       "id": 2,
@@ -31,7 +32,7 @@
       "firstname": "Claire",
       "lastname": "Petrelli",
       "manifesto": "This is me, I am Claire",
-      "votes": "10",
+      "votes": "19",
       "hasVoted": true
     }
   ],
