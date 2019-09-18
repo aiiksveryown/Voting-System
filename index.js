@@ -19,7 +19,6 @@ $(function(){
     var lastname = $("#lastname").val()
     var voterid = $("#voterid").val()
     error = true
-    console.log(lastname)
     $.ajax({
       url: "http://localhost:3000/voters",
       type: "GET",
@@ -27,13 +26,10 @@ $(function(){
       dataType: "json",
       contentType: "application/json"
     }).done(function(data) {
-      console.log(data)
-      ans = data.filter(element => element["lastname"] === lastname && element["id"] === voterid)
-      console.log(ans)
       $.each(data, function(key, value) {
         if (lastname==value.lastname && voterid==value.id) {
           error = false
-          console.log("okay")
+          let votecheck = value.hasVoted
         }
       })
       if (error === false) {
@@ -41,8 +37,14 @@ $(function(){
         alert("success")
         document.location="/dash.html"
         localStorage.setItem("id", voterid)
+        if (votecheck===true) {
+          $(".vote").attr("disabled", true)
+        } 
       }
-      else {alert("Invalid Credentials!")}
+      else {
+        alert("Invalid Credentials!")
+        document.location="#"
+      }
     })
   })
   $("#logout").click(function(){
@@ -56,8 +58,8 @@ $(function(){
       type: "GET",
       dataType : "json",
     }).done(function(result){
-
       candidate = result;
+      console.log(candidate)
       votes = Number(candidate.votes) + 1;
       
       $.ajax({
@@ -65,7 +67,9 @@ $(function(){
         data: {votes: votes},
         type: "PATCH",
         dataType : "json",
-      }).done()
+      }).done(function() {
+        $(".vote").hide()
+      })
     })
   })
   $(".vote2").click(function() {
@@ -77,6 +81,7 @@ $(function(){
     }).done(function(result){
 
       candidate = result;
+      console.log(candidate)
       votes = Number(candidate.votes) + 1;
 
       $.ajax({
@@ -84,7 +89,23 @@ $(function(){
         data: {votes: votes},
         type: "PATCH",
         dataType : "json",
-      }).done()
+      }).done(function() {
+        $(".vote").hide()
+      })
+    })
+  })
+  $(".candidateDetails").click(function(){
+    $.ajax({
+      url: "http://localhost:3000/voters/"+localStorage.getItem("id"),
+      type: "GET",
+      data:{},
+      dataType: "json",
+      contentType: "application/json"
+    }).done(function(data) {
+      let votecheck = data.hasVoted
+      if (votecheck===true) {
+        $(".vote").attr("disabled", true)
+      }
     })
   })
 })
