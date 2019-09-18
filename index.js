@@ -39,11 +39,33 @@ $(function(){
       if (error === false) {
         $("#loginform").attr("action", "dash.html")
         alert("success")
-        document.location="dash.html"
+        document.location="/dash.html"
         localStorage.setItem("id", voterid)
       }
       else {alert("Invalid Credentials!")}
     })
   })
+  $("#logout").click(function(){
+    localStorage.removeItem("id");
+    document.location="/index.html"
+  })
+  $(".vote1").click(function() {
+    $.ajax({
+      url: "http://localhost:3000/candidates?id=1",
+      data: {
+      },
+      type: "GET",
+      dataType : "json",
+    }).done(function(){
+      var votes = data[0].votes;
+      console.log(votes);
+    })
+    votesObject = {"votes":votes+1}
+    $.ajax({
+      url: "http://localhost:3000/candidates?id=1",
+      data: JSON.stringify(votesObject),
+      type: "PATCH",
+      dataType : "json",
+    }).done()
+  })
 })
-
