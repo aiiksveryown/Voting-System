@@ -22,7 +22,7 @@
       "firstname": "Hiro",
       "lastname": "Nakamora",
       "manifesto": "This is me, I am Hiro",
-      "votes": 0,
+      "votes": "5",
       "hasVoted": true
     },
     {
@@ -31,7 +31,7 @@
       "firstname": "Claire",
       "lastname": "Petrelli",
       "manifesto": "This is me, I am Claire",
-      "votes": 0
+      "votes": "4"
     }
   ],
   "admins": [

@@ -50,22 +50,42 @@ $(function(){
     document.location="/index.html"
   })
   $(".vote1").click(function() {
+    let candidate;
     $.ajax({
-      url: "http://localhost:3000/candidates?id=1",
-      data: {
-      },
+      url: "http://localhost:3000/candidates/1",
       type: "GET",
       dataType : "json",
-    }).done(function(){
-      var votes = data[0].votes;
-      console.log(votes);
+    }).done(function(result){
+
+      candidate = result;
+      votes = Number(candidate.votes) + 1;
+      
+      $.ajax({
+        url: "http://localhost:3000/candidates/1",
+        data: {votes: votes},
+        type: "PATCH",
+        dataType : "json",
+      }).done()
     })
-    votesObject = {"votes":votes+1}
+  })
+  $(".vote2").click(function() {
+    let candidate;
     $.ajax({
-      url: "http://localhost:3000/candidates?id=1",
-      data: JSON.stringify(votesObject),
-      type: "PATCH",
+      url: "http://localhost:3000/candidates/2",
+      type: "GET",
       dataType : "json",
-    }).done()
+    }).done(function(result){
+
+      candidate = result;
+      votes = Number(candidate.votes) + 1;
+
+      $.ajax({
+        url: "http://localhost:3000/candidates/2",
+        data: {votes: votes},
+        type: "PATCH",
+        dataType : "json",
+      }).done()
+    })
   })
 })
+
