@@ -1,19 +1,106 @@
 {
   "voters": [
     {
-      "id": 1,
+      "id": 1
+    },
+    {
       "firstname": "Peter",
       "lastname": "Petrelli",
-      "hasVoted": true
+      "email": "Peter@heroes.com",
+      "password": "qwerty",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 2
     },
     {
-      "id": 2,
       "firstname": "Nathan",
       "lastname": "Petrelli",
-      "hasVoted": true
+      "email": "nathan@heroes.com",
+      "password": "qwerty",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 3
     },
     {
-      "id": 3
+      "firstname": "i",
+      "lastname": "i",
+      "email": "1@1.co",
+      "password": "i",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 4
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 5
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 6
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 7
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 8
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 9
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 10
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 11
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": true,
+      "nin": "1234",
+      "id": 12
     }
   ],
   "candidates": [
@@ -23,7 +110,7 @@
       "firstname": "Hiro",
       "lastname": "Nakamora",
       "manifesto": "This is me, I am Hiro",
-      "votes": "10",
+      "votes": "11",
       "hasVoted": true
     },
     {
@@ -32,7 +119,7 @@
       "firstname": "Claire",
       "lastname": "Petrelli",
       "manifesto": "This is me, I am Claire",
-      "votes": "19",
+      "votes": "20",
       "hasVoted": true
     }
   ],
