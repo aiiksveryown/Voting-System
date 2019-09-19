@@ -25,13 +25,13 @@
   "candidates": [
     {
       "id": 1,
-      "party": "Decamper",
+      "party": "APC",
       "firstname": "Hiro",
       "lastname": "Nakamora",
-      "manifesto": "I'm a hoe",
+      "manifesto": "I can time travel!",
       "votes": 0,
       "hasVoted": true,
-      "election": "Presidentlll"
+      "election": "Presidential"
     },
     {
       "id": 2,
@@ -39,7 +39,7 @@
       "firstname": "Claire",
       "lastname": "Petrelli",
       "manifesto": "This is me, I am Claire",
-      "votes": "20",
+      "votes": "23",
       "hasVoted": true,
       "election": "Presidential"
     },

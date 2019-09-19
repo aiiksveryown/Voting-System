@@ -1,4 +1,13 @@
 $(function(){
+  // Countdown timer
+  $('#countdown-timer').countdown('2019/09/20', function(event) {
+    $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+  });
+
+  // Date picker
+  $("#date-picker").click(function(){
+    $(".datepicker").pickadate();
+  })
 
   // Populate Candidate Details in user dash
   $.ajax({
