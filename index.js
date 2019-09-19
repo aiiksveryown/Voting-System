@@ -23,6 +23,34 @@ $(function(){
     })
   })
 
+  // Admin Login
+  $("#admin-login-btn").click(function() {
+    var admin_login = $("#admin-username").val()
+    var admin_pass = $("#admin-pass").val()
+    error = true
+    $.ajax({
+      url: "http://localhost:3000/admins",
+      type: "GET",
+      data:{},
+      dataType: "json",
+      contentType: "application/json"
+    }).done(function(data) {
+      $.each(data, function(key, value) {
+        if (admin_login==value.username && admin_pass==value.password) {
+          error = false
+        }
+      })
+      if (error === false) {
+        alert("success")
+        document.location="/admindash.html"
+      }
+      else {
+        alert("Invalid Credentials!")
+        document.location="#"
+      }
+    })
+  })
+
   // Registers a new candidate
   $("#add-candidate").click(function(){
     var newfirstname = $("#add-candidate-firstname").val()
@@ -51,6 +79,10 @@ $(function(){
   $("tbody").on("click", ".editbtn", function() {
     let btn_id = $(this).attr("userid");
     $("#edit-candidate").attr("userid", btn_id)
+
+
+
+
   })
 
 
@@ -159,11 +191,16 @@ $(function(){
       // document.location="#"
     })
   })
-
+  // Logging off
   // Clear local storage on user log out
   $("#logout").click(function(){
     localStorage.removeItem("id");
     document.location="/index.html"
+  })
+  // Admin logout
+  $("#logout").click(function(){
+    localStorage.removeItem("id");
+    document.location="/adminindex.html"
   })
 
   // When user votes, disable the user's ability to vote again
