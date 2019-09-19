@@ -13,24 +13,85 @@ $(function(){
     $(".manifesto1").text(data[0]["manifesto"])
     $(".manifesto2").text(data[1]["manifesto"])
     // Populating admin dashboard table with candidate details
+    let count = 0
     $.each(data, function(key, value) {
+      count++
       appendData = ""
-      appendData += '<tr><th scope="row">'+value.id+'</th><td>'+value.firstname+' '+value.lastname+'</td><td>'+value.election+'</td><td>'+value.party+'</td><td>'+value.votes+'</td><td><button class="editbtn" id="'+value.id+'edit" data-toggle="modal" data-target="#modaleditform">Edit</button><button class="deletebtn">Delete</button></td></tr>'
+      appendData += '<tr><th scope="row">'+count+'</th><td>'+value.firstname+' '+value.lastname+'</td><td>'+value.election+'</td><td>'+value.party+'</td><td>'+value.votes+'</td><td><button class="editbtn" userid="'+value.id+'" data-toggle="modal" data-target=".modal-edit-candidate">Edit</button><button class="deletebtn" userid="'+value.id+'" data-target="#ModalDanger" data-toggle="modal">Delete</button></td></tr>'
       
       $("tbody").append(appendData)
     })
   })
 
-  $("tbody").on("click", ".editbtn", function() {
-    console.log($(this).attr("id"))
-    console.log("clickd")
+  // Registers a new candidate
+  $("#add-candidate").click(function(){
+    var newfirstname = $("#add-candidate-firstname").val()
+    var newlastname = $("#add-candidate-lastname").val()
+    var newparty = $("#add-candidate-party").val()
+    var newmanifesto = $("#add-candidate-manifesto").val()
+    var newelection = $("#add-candidate-election").val()
+    var new_details = {
+      "party": newparty,
+      "firstname": newfirstname,
+      "lastname": newlastname,
+      "manifesto": newmanifesto,
+      "votes": 0,
+      "election": newelection
+    }
     $.ajax({
       url: "http://localhost:3000/candidates/",
-      type: "PATCH",
-      data:JSON.stringify(votecheck),
+      type: "POST",
+      data:JSON.stringify(new_details),
       dataType: "json",
       contentType: "application/json"
-    }).done(alert("Thank you for participating!"))
+    }).done(alert("Update Successful!"))
+  })
+
+  // Edit button click, assign userid of "make changes" to the selected candidate's id, and prefills edit form with existing candidate data
+  $("tbody").on("click", ".editbtn", function() {
+    let btn_id = $(this).attr("userid");
+    $("#edit-candidate").attr("userid", btn_id)
+  })
+
+
+  // Gets the user input and updates/edits the candidate 
+  $("#edit-candidate").click(function(){
+    console.log("edit clicked")
+    var edituserid = $(this).attr("userid")
+    var editfirstname = $("#edit-candidate-firstname").val()
+    var editlastname = $("#edit-candidate-lastname").val()
+    var editparty = $("#edit-candidate-party").val()
+    var editmanifesto = $("#edit-candidate-manifesto").val()
+    var editelection = $("#edit-candidate-election").val()
+    var new_edit_details = {
+      "party": editparty,
+      "firstname": editfirstname,
+      "lastname": editlastname,
+      "manifesto": editmanifesto,
+      "election": editelection
+    }
+    $.ajax({
+      url: "http://localhost:3000/candidates/"+edituserid,
+      type: "PATCH",
+      data:JSON.stringify(new_edit_details),
+      dataType: "json",
+      contentType: "application/json"
+    }).done(alert("Update Successful!"))
+  })
+
+  // Deletes a user
+  $("tbody").on("click", ".deletebtn", function() {
+    let btn_id = $(this).attr("userid");
+    $("#delete-candidate").attr("userid", btn_id)
+  })
+  $("#delete-candidate").click(function(){
+    var deleteuserid = $(this).attr("userid")
+    $.ajax({
+      url: "http://localhost:3000/candidates/"+deleteuserid,
+      type: "DELETE",
+      dataType: "json",
+      contentType: "application/json"
+    }).done(alert("Delete Successful!"))
   })
 
   // On click login, if user logged in before then go to dashboard

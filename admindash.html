@@ -75,10 +75,10 @@
   </nav>-->
 
   <div class="text-center">
-      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalnewcandidate">Add New Candidate</a>
+      <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target=".modalnewcandidate">Add New Candidate</a>
   </div>
 
-  <div class="modal fade" id="#modalnewcandidate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade modalnewcandidate" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -92,42 +92,42 @@
           <div class="md-form mb-5">
             <i class="fas fa-user prefix grey-text"></i>
             <input type="text" id="add-candidate-firstname">
-            <label data-error="wrong" data-success="right" for="edit-candidate-firstname">First Name</label>
+            <label data-error="wrong" data-success="right" for="#add-candidate-firstname">First Name</label>
           </div>
 
           <div class="md-form mb-5">
             <i class="fas fa-user prefix grey-text"></i>
             <input type="text" id="add-candidate-lastname">
-            <label data-error="wrong" data-success="right" for="edit-candidate-lastname">Last Name</label>
+            <label data-error="wrong" data-success="right" for="#add-candidate-lastname">Last Name</label>
           </div>
 
           <div class="md-form mb-4">
             <i class="fas fa-user prefix grey-text"></i>
             <input type="text" id="add-candidate-party">
-            <label data-error="wrong" data-success="right" for="edit-candidate-party">Party</label>
+            <label data-error="wrong" data-success="right" for="#add-candidate-party">Party</label>
           </div>
 
           <div class="md-form mb-4">
               <i class="fas fa-user prefix grey-text"></i>
               <input type="text" id="add-candidate-manifesto">
-              <label data-error="wrong" data-success="right" for="edit-candidate-manifesto">Manifesto</label>
+              <label data-error="wrong" data-success="right" for="#add-candidate-manifesto">Manifesto</label>
           </div>
 
           <div class="md-form mb-4">
               <i class="fas fa-user prefix grey-text"></i>
               <input type="text" id="add-candidate-election">
-              <label data-error="wrong" data-success="right" for="edit-candidate-election">Election</label>
+              <label data-error="wrong" data-success="right" for="#add-candidate-election">Election</label>
           </div>
 
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button class="btn btn-deep-orange">Sign up</button>
+          <button class="btn btn-deep-orange" id="add-candidate">Add Candidate</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="modaleditform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade modal-edit-candidate" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -169,11 +169,48 @@
 
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button class="btn btn-deep-orange">Make Changes</button>
+          <button class="btn btn-deep-orange" id="edit-candidate">Make Changes</button>
         </div>
       </div>
     </div>
   </div>
+
+    <!-- Central Modal Danger Demo-->
+  <div class="modal fade right" id="ModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="t`rue">
+    <div class="modal-dialog modal-notify modal-danger modal-side modal-top-right" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading">WARNING  </p>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+
+        <!--Body-->
+        <div class="modal-body">
+
+          <div class="row justify-content-center">
+            <div class="col-9">
+              <p><strong>ARE YOU SURE YOU WANT TO DELETE THIS CANDIDATE?</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+          <a type="button" class="btn btn-danger deletebtn" id="delete-candidate">DELETE <i class="far fa-trash-alt ml-1 white-text"></i></a>
+          <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No, thanks</a>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!-- Central Modal Danger Demo-->
+
 
     <table class="table" style="width: 80%" align="center">
       <thead class="thead-dark">

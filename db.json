@@ -25,13 +25,13 @@
   "candidates": [
     {
       "id": 1,
-      "party": "APC",
+      "party": "Decamper",
       "firstname": "Hiro",
       "lastname": "Nakamora",
-      "manifesto": "This is me, I am Hiro",
-      "votes": "11",
+      "manifesto": "I'm a hoe",
+      "votes": 0,
       "hasVoted": true,
-      "election": "Presidential"
+      "election": "Presidentlll"
     },
     {
       "id": 2,
@@ -42,6 +42,15 @@
       "votes": "20",
       "hasVoted": true,
       "election": "Presidential"
+    },
+    {
+      "party": "PCP",
+      "firstname": "Sango",
+      "lastname": "Tedo",
+      "manifesto": "I too far",
+      "votes": 0,
+      "election": "State",
+      "id": 4
     }
   ],
   "admins": [
