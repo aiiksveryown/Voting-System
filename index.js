@@ -8,10 +8,29 @@ $(function(){
     type: "GET",
     dataType : "json",
   }).done(function(data) {
-      $(".name1").text(data[0]["firstname"]+" "+data[0]["lastname"])
-      $(".name2").text(data[1]["firstname"]+" "+data[1]["lastname"])
-      $(".manifesto1").text(data[0]["manifesto"])
-      $(".manifesto2").text(data[1]["manifesto"])
+    $(".name1").text(data[0]["firstname"]+" "+data[0]["lastname"])
+    $(".name2").text(data[1]["firstname"]+" "+data[1]["lastname"])
+    $(".manifesto1").text(data[0]["manifesto"])
+    $(".manifesto2").text(data[1]["manifesto"])
+    // Populating admin dashboard table with candidate details
+    $.each(data, function(key, value) {
+      appendData = ""
+      appendData += '<tr><th scope="row">'+value.id+'</th><td>'+value.firstname+' '+value.lastname+'</td><td>'+value.election+'</td><td>'+value.party+'</td><td>'+value.votes+'</td><td><button class="editbtn" id="'+value.id+'edit" data-toggle="modal" data-target="#modaleditform">Edit</button><button class="deletebtn">Delete</button></td></tr>'
+      
+      $("tbody").append(appendData)
+    })
+  })
+
+  $("tbody").on("click", ".editbtn", function() {
+    console.log($(this).attr("id"))
+    console.log("clickd")
+    $.ajax({
+      url: "http://localhost:3000/candidates/",
+      type: "PATCH",
+      data:JSON.stringify(votecheck),
+      dataType: "json",
+      contentType: "application/json"
+    }).done(alert("Thank you for participating!"))
   })
 
   // On click login, if user logged in before then go to dashboard
