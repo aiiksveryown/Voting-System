@@ -1,17 +1,24 @@
 {
   "voters": [
     {
-      "id": 1,
-      "firstname": "Peter",
-      "lastname": "Petrelli"
+      "id": 1
     },
     {
-      "id": 2,
+      "firstname": "Peter",
+      "lastname": "Petrelli",
+      "email": "Peter@heroes.com",
+      "password": "qwerty",
+      "hasVoted": false,
+      "nin": "1234",
+      "id": 2
+    },
+    {
       "firstname": "Nathan",
       "lastname": "Petrelli",
-      "hasVoted": true
-    },
-    {
+      "email": "nathan@heroes.com",
+      "password": "qwerty",
+      "hasVoted": true,
+      "nin": "1234",
       "id": 3
     }
   ],
@@ -21,9 +28,10 @@
       "party": "APC",
       "firstname": "Hiro",
       "lastname": "Nakamora",
-      "manifesto": "This is me, I am Hiro",
+      "manifesto": "I can time travel!",
       "votes": 0,
-      "hasVoted": true
+      "hasVoted": true,
+      "election": "Presidential"
     },
     {
       "id": 2,
@@ -31,7 +39,18 @@
       "firstname": "Claire",
       "lastname": "Petrelli",
       "manifesto": "This is me, I am Claire",
-      "votes": 0
+      "votes": "23",
+      "hasVoted": true,
+      "election": "Presidential"
+    },
+    {
+      "party": "PCP",
+      "firstname": "Sango",
+      "lastname": "Tedo",
+      "manifesto": "I too far",
+      "votes": 0,
+      "election": "State",
+      "id": 4
     }
   ],
   "admins": [
