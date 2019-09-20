@@ -1,7 +1,7 @@
 $(function(){
   // Countdown timer
   $('#countdown-timer').countdown('2019/09/20', function(event) {
-    $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+    $(this).html(event.strftime('%d Days, %H Hours, %M Minutes and %S Seconds left to vote!'));
   });
 
   // Date picker
@@ -21,6 +21,7 @@ $(function(){
     $(".name2").text(data[1]["firstname"]+" "+data[1]["lastname"])
     $(".manifesto1").text(data[0]["manifesto"])
     $(".manifesto2").text(data[1]["manifesto"])
+
     // Populating admin dashboard table with candidate details
     let count = 0
     $.each(data, function(key, value) {
@@ -179,11 +180,11 @@ $(function(){
 
   // Populates db with new user details from signup
   $("#signup").click(function(){
-    var firstnameSignup = $("#firstname").val()
-    var lastnameSignup = $("#lastname").val()
-    var emailSignup = $("#email").val()
-    var passwordSignup = $("#password").val()
-    var ninSignup = $("#nin").val()
+    var firstnameSignup = $("#firstname-signup").val()
+    var lastnameSignup = $("#lastname-signup").val()
+    var emailSignup = $("#email-signup").val()
+    var passwordSignup = $("#password-signup").val()
+    var ninSignup = $("#nin-signup").val()
     alreadyExists = false
     newUser = {
       "firstname": firstnameSignup, "lastname": lastnameSignup, "email": emailSignup, "password": passwordSignup, "hasVoted": false, "nin": ninSignup
@@ -200,14 +201,16 @@ $(function(){
       // document.location="#"
     })
   })
+
   // Logging off
   // Clear local storage on user log out
   $("#logout").click(function(){
     localStorage.removeItem("id");
     document.location="/index.html"
   })
+
   // Admin logout
-  $("#logout").click(function(){
+  $("#adminlogout").click(function(){
     localStorage.removeItem("id");
     document.location="/adminindex.html"
   })
