@@ -1,8 +1,31 @@
 $(function(){
   // Countdown timer
-  $('#countdown-timer').countdown('2019/09/21', function(event) {
+  $('#countdown-timer').countdown('2019/09/20 09:14:00', function(event) {
     $(this).html(event.strftime('%d Days, %H Hours, %M Minutes and %S Seconds left to vote!'));
-  });
+  }).on('finish.countdown', function(){
+    console.log("finishhh")
+    $(".vote").attr("disabled", true)
+    
+
+    $.ajax({
+      url: "http://localhost:3000/candidates",
+      data: {
+      },
+      type: "GET",
+      dataType : "json",
+    }).done(function(data){
+      $.each(data, function(){
+        winnervotes = 0
+        winner = ""
+        if (parseInt(value.votes)>winnervotes) {
+          winnervotes = parseInt(value.votes)
+          winner = value.firstname
+        }
+      })
+      $("#announce").text("Election is finished! The winner is "+winner+"!")
+    })
+
+  })
 
   // Date picker
   $("#date-picker").click(function(){
