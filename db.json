@@ -46,20 +46,11 @@
       "id": 2,
       "party": "PDP",
       "firstname": "Claire",
-      "lastname": "Petrelli",
-      "manifesto": "This is me, I am Claire",
+      "lastname": "Bennet",
+      "manifesto": "Hey! I am indestructible!",
       "votes": "23",
       "hasVoted": true,
       "election": "Presidential"
-    },
-    {
-      "party": "PCP",
-      "firstname": "Sango",
-      "lastname": "Tedo",
-      "manifesto": "I too far",
-      "votes": 0,
-      "election": "State",
-      "id": 4
     }
   ],
   "admins": [

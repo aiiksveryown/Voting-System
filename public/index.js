@@ -1,6 +1,6 @@
 $(function(){
   // Countdown timer
-  $('#countdown-timer').countdown('2019/09/20', function(event) {
+  $('#countdown-timer').countdown('2019/09/21', function(event) {
     $(this).html(event.strftime('%d Days, %H Hours, %M Minutes and %S Seconds left to vote!'));
   });
 
@@ -31,7 +31,8 @@ $(function(){
     $.each(data, function(key, value) {
       count++
       appendData = ""
-      appendData += '<tr><th scope="row">'+count+'</th><td>'+value.firstname+' '+value.lastname+'</td><td>'+value.election+'</td><td>'+value.party+'</td><td>'+value.votes+'</td><td><button class="editbtn" userid="'+value.id+'" data-toggle="modal" data-target=".modal-edit-candidate">Edit</button><button class="deletebtn" userid="'+value.id+'" data-target="#ModalDanger" data-toggle="modal">Delete</button></td></tr>'
+
+      appendData += '<tr><th scope="row">'+count+'</th><td><a href="#">'+value.firstname+' '+value.lastname+'</a></td><td>'+value.election+'</td><td>'+value.party+'</td><td>'+value.votes+'</td><td><a href="#" class="editbtn btn btn-sm btn-primary my-1 my-sm-0" userid="'+value.id+'" data-toggle="modal" data-target=".modal-edit-candidate"><span class="fas fa-edit mr-1"></span>Edit</a><a href="#" class="btn btn-sm btn-danger my-1 my-sm-0 deletebtn" userid="'+value.id+'" data-toggle="modal" data-target="#ModalDanger"><span class="fas fa-trash mr-1"></span>Delete</a></td></tr>'
       
       $("tbody").append(appendData)
     })
@@ -56,7 +57,7 @@ $(function(){
       })
       if (error === false) {
         alert("success")
-        document.location="/admindash.html"
+        document.location="dashboard-admin.html"
       }
       else {
         alert("Invalid Credentials!")
