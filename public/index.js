@@ -144,9 +144,10 @@ $(function(){
   })
 
   // Validate login and add user id to local storage
-  $("#login2").click(function() {
-    var ninlogin = $("#ninlogin").val()
-    var passwordlogin = $("#passwordlogin").val()
+  $("#login-btn").click(function() {
+    console.log("click")
+    var ninlogin = $("#nin-login").val()
+    var passwordlogin = $("#password-login").val()
     error = true
     $.ajax({
       url: "http://localhost:3000/voters",

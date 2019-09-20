@@ -1,21 +1,6 @@
 .logo {
   height: 80px;
 }
-
-body, html {
-  height: 100%;
+.card-img-top {
+  height: 50px;
 }
-
-body {
-  /* The image used */
-  background-image: url("../images/bg4.jpg");
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
