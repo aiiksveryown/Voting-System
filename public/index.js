@@ -1,8 +1,31 @@
 $(function(){
   // Countdown timer
-  $('#countdown-timer').countdown('2019/09/20', function(event) {
+  $('#countdown-timer').countdown('2019/09/20 09:14:00', function(event) {
     $(this).html(event.strftime('%d Days, %H Hours, %M Minutes and %S Seconds left to vote!'));
-  });
+  }).on('finish.countdown', function(){
+    console.log("finishhh")
+    $(".vote").attr("disabled", true)
+    
+
+    $.ajax({
+      url: "http://localhost:3000/candidates",
+      data: {
+      },
+      type: "GET",
+      dataType : "json",
+    }).done(function(data){
+      $.each(data, function(){
+        winnervotes = 0
+        winner = ""
+        if (parseInt(value.votes)>winnervotes) {
+          winnervotes = parseInt(value.votes)
+          winner = value.firstname
+        }
+      })
+      $("#announce").text("Election is finished! The winner is "+winner+"!")
+    })
+
+  })
 
   // Date picker
   $("#date-picker").click(function(){
@@ -17,17 +40,22 @@ $(function(){
     type: "GET",
     dataType : "json",
   }).done(function(data) {
-    $(".name1").text(data[0]["firstname"]+" "+data[0]["lastname"])
-    $(".name2").text(data[1]["firstname"]+" "+data[1]["lastname"])
-    $(".manifesto1").text(data[0]["manifesto"])
-    $(".manifesto2").text(data[1]["manifesto"])
+    $("#candidate-1-name").text(data[0]["firstname"]+" "+data[0]["lastname"])
+    $("#candidate-2-name").text(data[1]["firstname"]+" "+data[1]["lastname"])
+    $("#candidate-1-manifesto").text(data[0]["manifesto"])
+    $("#candidate-2-manifesto").text(data[1]["manifesto"])
+    $("#candidate-1-vote").text("Vote for "+data[0]["firstname"])
+    $("#candidate-2-vote").text("Vote for "+data[1]["firstname"])
+    $("#candidate-1-vote").attr("userid", data[0]["id"])
+    $("#candidate-2-vote").attr("userid", data[1]["id"])
 
     // Populating admin dashboard table with candidate details
     let count = 0
     $.each(data, function(key, value) {
       count++
       appendData = ""
-      appendData += '<tr><th scope="row">'+count+'</th><td>'+value.firstname+' '+value.lastname+'</td><td>'+value.election+'</td><td>'+value.party+'</td><td>'+value.votes+'</td><td><button class="editbtn" userid="'+value.id+'" data-toggle="modal" data-target=".modal-edit-candidate">Edit</button><button class="deletebtn" userid="'+value.id+'" data-target="#ModalDanger" data-toggle="modal">Delete</button></td></tr>'
+
+      appendData += '<tr><th scope="row">'+count+'</th><td><a href="#">'+value.firstname+' '+value.lastname+'</a></td><td>'+value.election+'</td><td>'+value.party+'</td><td>'+value.votes+'</td><td><a href="#" class="editbtn btn btn-sm btn-primary my-1 my-sm-0" userid="'+value.id+'" data-toggle="modal" data-target=".modal-edit-candidate"><span class="fas fa-edit mr-1"></span>Edit</a><a href="#" class="btn btn-sm btn-danger my-1 my-sm-0 deletebtn" userid="'+value.id+'" data-toggle="modal" data-target="#ModalDanger"><span class="fas fa-trash mr-1"></span>Delete</a></td></tr>'
       
       $("tbody").append(appendData)
     })
@@ -52,7 +80,7 @@ $(function(){
       })
       if (error === false) {
         alert("success")
-        document.location="/admindash.html"
+        document.location="dashboard-admin.html"
       }
       else {
         alert("Invalid Credentials!")
@@ -139,14 +167,15 @@ $(function(){
   // On click login, if user logged in before then go to dashboard
   $(".navlogin").click(function(){
     if (localStorage.getItem("id")!==null) {
-      document.location=dash.html
+      document.location=dashboard.html
     }
   })
 
   // Validate login and add user id to local storage
-  $("#login2").click(function() {
-    var ninlogin = $("#ninlogin").val()
-    var passwordlogin = $("#passwordlogin").val()
+  $("#login-btn").click(function() {
+    console.log("click")
+    var ninlogin = $("#nin-login").val()
+    var passwordlogin = $("#password-login").val()
     error = true
     $.ajax({
       url: "http://localhost:3000/voters",
@@ -165,7 +194,7 @@ $(function(){
       if (error === false) {
         $("#loginform").attr("action", "dash.html")
         alert("success")
-        document.location="/dash.html"
+        document.location="/dashboard.html"
         localStorage.setItem("id", voterid)
         if (votecheck===true) {
           $(".vote").attr("disabled", true)
@@ -215,23 +244,44 @@ $(function(){
     document.location="/adminindex.html"
   })
 
+  localStorage.setItem("id", 2)
   // When user votes, disable the user's ability to vote again
   $(".vote").click(function(){
-    votecheck = {"hasVoted": true}
-    $.ajax({
-      url: "http://localhost:3000/voters/"+localStorage.getItem("id"),
-      type: "PATCH",
-      data:JSON.stringify(votecheck),
-      dataType: "json",
-      contentType: "application/json"
-    }).done(alert("Thank you for participating!"))
+    candidate_id = $(this).attr("userid")
+    if (localStorage.getItem("id")==null) {
+      $(".alert-danger").fadeIn()
+      console.log("not logged in")
+      
+    }
+    else {
+      $.ajax({
+        url: "http://localhost:3000/voters/"+localStorage.getItem("id"),
+        type: "GET",
+        data:{},
+        dataType: "json",
+        contentType: "application/json"
+      }).done(function(data) {
+        let vote_check = data.hasVoted
+        console.log(vote_check)
+        if (vote_check===true) {
+          $(".vote").attr("disabled", true)
+          alert("You have already voted!")
+        }
+        else {
+          $("#vote-confirmation").modal("toggle")
+          $("#confirmed-vote").attr("userid", candidate_id)
+          console.log($("#confirmed-vote").attr("userid"))    
+        }
+      })
+    }
   })
 
   // When user votes, update candidate1 vote count
-  $(".vote1").click(function() {
+  $("#confirmed-vote").click(function() {
+    candidate_id = $("#confirmed-vote").attr("userid")
     let candidate;
     $.ajax({
-      url: "http://localhost:3000/candidates/1",
+      url: "http://localhost:3000/candidates/"+candidate_id,
       type: "GET",
       dataType : "json",
     }).done(function(result){
@@ -240,7 +290,7 @@ $(function(){
       votes = Number(candidate.votes) + 1;
       
       $.ajax({
-        url: "http://localhost:3000/candidates/1",
+        url: "http://localhost:3000/candidates/"+candidate_id,
         data: {votes: votes},
         type: "PATCH",
         dataType : "json",
@@ -248,6 +298,14 @@ $(function(){
         $(".vote").hide()
       })
     })
+    votecheck = {"hasVoted": true}
+    $.ajax({
+      url: "http://localhost:3000/voters/"+localStorage.getItem("id"),
+      type: "PATCH",
+      data:JSON.stringify(votecheck),
+      dataType: "json",
+      contentType: "application/json"
+    }).done(console.log("Thank you for participating!"))
   })
 
   // When user votes, update candidate2 vote count

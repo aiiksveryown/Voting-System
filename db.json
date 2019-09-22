@@ -8,7 +8,7 @@
       "lastname": "Petrelli",
       "email": "Peter@heroes.com",
       "password": "qwerty",
-      "hasVoted": false,
+      "hasVoted": true,
       "nin": "1234",
       "id": 2
     },
@@ -20,6 +20,15 @@
       "hasVoted": true,
       "nin": "1234",
       "id": 3
+    },
+    {
+      "firstname": "Admin",
+      "lastname": "Admin",
+      "email": "admin@heroes.com",
+      "password": "qwerty",
+      "hasVoted": false,
+      "nin": "123456",
+      "id": 4
     }
   ],
   "candidates": [
@@ -29,7 +38,7 @@
       "firstname": "Hiro",
       "lastname": "Nakamora",
       "manifesto": "I can time travel!",
-      "votes": 0,
+      "votes": "2",
       "hasVoted": true,
       "election": "Presidential"
     },
@@ -37,20 +46,11 @@
       "id": 2,
       "party": "PDP",
       "firstname": "Claire",
-      "lastname": "Petrelli",
-      "manifesto": "This is me, I am Claire",
+      "lastname": "Bennet",
+      "manifesto": "Hey! I am indestructible!",
       "votes": "23",
       "hasVoted": true,
       "election": "Presidential"
-    },
-    {
-      "party": "PCP",
-      "firstname": "Sango",
-      "lastname": "Tedo",
-      "manifesto": "I too far",
-      "votes": 0,
-      "election": "State",
-      "id": 4
     }
   ],
   "admins": [
