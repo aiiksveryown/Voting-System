@@ -1,6 +1,7 @@
 $(function(){
   // Countdown timer
-  $('#countdown-timer').countdown('2019/09/20 09:14:00', function(event) {
+  set_deadline = $("#deadline-set").val()
+  $('#countdown-timer').countdown(set_deadline, function(event) {
     $(this).html(event.strftime('%d Days, %H Hours, %M Minutes and %S Seconds left to vote!'));
   }).on('finish.countdown', function(){
     console.log("finishhh")
@@ -233,15 +234,18 @@ $(function(){
 
   // Logging off
   // Clear local storage on user log out
+  console.log(document.localStorage("id"))
+
   $("#logout").click(function(){
     localStorage.removeItem("id");
     document.location="/index.html"
+    console.log(document.localStorage("id"))
   })
 
   // Admin logout
   $("#adminlogout").click(function(){
     localStorage.removeItem("id");
-    document.location="/adminindex.html"
+    document.location="/index-admin.html"
   })
 
   localStorage.setItem("id", 2)

@@ -29,28 +29,44 @@
       "hasVoted": false,
       "nin": "123456",
       "id": 4
+    },
+    {
+      "firstname": "mark",
+      "lastname": "bashir",
+      "email": "beejayphil@gmail.com",
+      "password": "bash",
+      "hasVoted": false,
+      "nin": "474774747",
+      "id": 5
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "hasVoted": false,
+      "nin": "",
+      "id": 6
     }
   ],
   "candidates": [
     {
-      "id": 1,
-      "party": "APC",
-      "firstname": "Hiro",
-      "lastname": "Nakamora",
-      "manifesto": "I can time travel!",
-      "votes": "2",
-      "hasVoted": true,
-      "election": "Presidential"
+      "party": "PCP",
+      "firstname": "Sango",
+      "lastname": "Tedo",
+      "manifesto": "I no send",
+      "votes": 0,
+      "election": "State",
+      "id": 3
     },
     {
-      "id": 2,
-      "party": "PDP",
-      "firstname": "Claire",
-      "lastname": "Bennet",
-      "manifesto": "Hey! I am indestructible!",
-      "votes": "23",
-      "hasVoted": true,
-      "election": "Presidential"
+      "party": "ABC",
+      "firstname": "Peter",
+      "lastname": "Petrelli",
+      "manifesto": "I can fly!",
+      "votes": 0,
+      "election": "Pres",
+      "id": 4
     }
   ],
   "admins": [
